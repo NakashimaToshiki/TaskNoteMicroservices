@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Identity.Http.Client\Identity.Http.Client.csproj" />
+    <ProjectReference Include="..\..\..\MicroServices\Identity\Identity.Http.Client\Identity.Http.Client.csproj" />
   </ItemGroup>
 
 </Project>
