@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  tasknote-bff:
+    image: ${DOCKER_REGISTRY-}tasknote-bff
+    build:
+      context: .
+      dockerfile: src/ApiGateways/Aggregators/TaskNote.Bff/Dockerfile
+    depends_on:
+      - identity-webapi
+      - job-webapi
+      
+  tasknote-bff-dapr:
+    image: "daprio/daprd:1.6.0"
+    network_mode: "service:tasknote-bff"
+    depends_on:
+      - tasknote-bff
+
+  identity-webapi:
+    image: ${DOCKER_REGISTRY-}identity
+    build:
+      context: .
+      dockerfile: src/MicroServices/Identity/Identity.WebApi/Dockerfile
+      
+  identity-webapi-dapr:
+    image: "daprio/daprd:1.6.0"
+    network_mode: "service:identity-webapi"
+    depends_on:
+      - identity-webapi
+  
+  job-webapi:
+    image: ${DOCKER_REGISTRY-}jobwebapi
+    build:
+      context: .
+      dockerfile: src/MicroServices/Job/Job.WebApi/Dockerfile
+      
+  job-webapi-dapr:
+    image: "daprio/daprd:1.6.0"
+    network_mode: "service:job-webapi"
+    depends_on:
+      - job-webapi

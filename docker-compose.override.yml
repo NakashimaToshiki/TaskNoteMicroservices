@@ -1,0 +1,51 @@
+version: '3.4'
+
+services:
+  tasknote-bff:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - IdentityApiId=identity-webapi
+    ports:
+      - "1101:80"
+      - "2101:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  tasknote-bff-dapr:
+    command: ["./daprd", 
+      "-app-id", "tasknote-bff",
+      "-app-port", "80"]
+
+  identity-webapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "1001:80"
+      - "2001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  identity-webapi-dapr:
+    command: ["./daprd", 
+      "-app-id", "identity-webapi",
+      "-app-port", "80"]
+      
+  job-webapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "1002:80"
+      - "2002:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  job-webapi-dapr:
+    command: ["./daprd", 
+      "-app-id", "job-webapi",
+      "-app-port", "80"]
