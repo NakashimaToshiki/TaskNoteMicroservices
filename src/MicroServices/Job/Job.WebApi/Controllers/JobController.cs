@@ -32,10 +32,10 @@ public class JobController : Controller
 
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(int id)
     {
-        if (!await _session.DeleteAsync(id)) return NoContent();
+        if (!await _session.DeleteAsync(id)) return NotFound();
         return NoContent();
     }
 
@@ -55,7 +55,8 @@ public class JobController : Controller
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> Post(JobModel input)
     {
-        if (!await _session.Create(input)) return Conflict();
-        return CreatedAtAction(nameof(GetById), new { input.Id }, input);
+        var record = await _session.Create(input);
+        if (record == null) return Conflict();
+        return CreatedAtAction(nameof(GetById), new { input.Id }, record);
     }
 }

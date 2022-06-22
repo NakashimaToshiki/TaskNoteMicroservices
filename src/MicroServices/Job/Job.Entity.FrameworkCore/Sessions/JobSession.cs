@@ -33,16 +33,18 @@ public class JobSession
         }
     }
 
-    public async Task<bool> Create(JobModel input)
+    public async Task<JobModel?> Create(JobModel input)
     {
         try
         {
+            // id = 0 で作成すると
             using var db = _dbFactory.CreateDbContext();
             var find = await db.Jobs.FindAsync(input.Id);
-            if (find != null) return false;
+            if (find != null) return null;
             var record = _mapper.Map<JobEntity>(input);
             db.Jobs.Add(record);
-            return await db.SaveChangesAsync() > 0;
+            await db.SaveChangesAsync();
+            return _mapper.Map<JobModel>(record);
         }
         catch (Exception e)
         {
