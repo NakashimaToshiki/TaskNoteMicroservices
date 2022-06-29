@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskNote.Bff", "src\ApiGate
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Http.Client", "src\MicroServices\Identity\Identity.Http.Client\Identity.Http.Client.csproj", "{4086D057-064D-4107-A171-BDE997BC31A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.Http.Client", "..\Job.Http.Client\Job.Http.Client.csproj", "{89B93037-9054-409C-ABF2-00E69995A872}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{4086D057-064D-4107-A171-BDE997BC31A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4086D057-064D-4107-A171-BDE997BC31A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4086D057-064D-4107-A171-BDE997BC31A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89B93037-9054-409C-ABF2-00E69995A872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B93037-9054-409C-ABF2-00E69995A872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B93037-9054-409C-ABF2-00E69995A872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B93037-9054-409C-ABF2-00E69995A872}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{658C87FE-FF42-48D4-95A2-2EBB2B0EC3FE} = {F6B095F6-B22E-4730-8CD9-163B64819945}
 		{972F8DA8-55F5-4D58-A5F0-E43F531CE642} = {7CEA5258-90B3-4B57-97FF-72C71216206E}
 		{4086D057-064D-4107-A171-BDE997BC31A6} = {024BDF5D-DA0B-4E2A-AD9A-76D3CA6EF44E}
+		{89B93037-9054-409C-ABF2-00E69995A872} = {CEC62539-CD34-4FC1-904E-2098F4B0B550}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EE8962C-353C-4563-B9CD-408C95CECB73}

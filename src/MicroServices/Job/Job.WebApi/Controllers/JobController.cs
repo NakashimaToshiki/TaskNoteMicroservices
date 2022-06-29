@@ -14,7 +14,7 @@ public class JobController : Controller
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<ActionResult<JobModel>> GetById(int id)
+    public async Task<ActionResult<JobModel>> GetById(int id, [FromQuery] Header header)
     {
         var record = await _session.ReadById(id);
         if (record == null) return NoContent();
@@ -24,7 +24,7 @@ public class JobController : Controller
     [HttpPatch]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Patch(JobModel input)
+    public async Task<IActionResult> Patch(JobModel input, [FromHeader] Header header)
     {
         if (!await _session.Update(input)) return NotFound();
         else return CreatedAtAction(nameof(GetById), new { input.Id }, input);
@@ -33,7 +33,7 @@ public class JobController : Controller
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(int id, [FromHeader] Header header)
     {
         if (!await _session.DeleteAsync(id)) return NotFound();
         return NoContent();
