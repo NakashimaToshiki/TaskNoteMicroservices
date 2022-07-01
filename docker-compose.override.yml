@@ -6,6 +6,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - IdentityApiId=identity-webapi
+      - JobApiId=job-webapi
     ports:
       - "1101:80"
       - "2101:443"

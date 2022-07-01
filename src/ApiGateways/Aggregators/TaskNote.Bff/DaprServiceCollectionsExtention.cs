@@ -2,6 +2,7 @@
 
 using Dapr.Client;
 using Identity.Http.Client;
+using Job.Http.Client;
 using Microsoft.Extensions.DependencyInjection;
 
 public static class DaprServiceCollectionExtentions
@@ -9,6 +10,7 @@ public static class DaprServiceCollectionExtentions
     public static IServiceCollection AddTaskNoteHttpClient(this IServiceCollection services) =>
         services
         .AddSingleton<WeatherForecastClient>(_ => new WeatherForecastClient(CreateHttpClient("IdentityApiId")))
+        .AddSingleton<JobClient>(_ => new JobClient(CreateHttpClient("JobApiId")))
         ;
 
     private static HttpClient CreateHttpClient(string environmentName)

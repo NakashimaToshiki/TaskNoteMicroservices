@@ -29,7 +29,7 @@ services:
       - identity-webapi
   
   job-webapi:
-    image: ${DOCKER_REGISTRY-}jobwebapi
+    image: ${DOCKER_REGISTRY-}job
     build:
       context: .
       dockerfile: src/MicroServices/Job/Job.WebApi/Dockerfile
