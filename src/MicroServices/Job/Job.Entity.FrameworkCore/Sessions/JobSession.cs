@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Job.Http;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -33,11 +34,24 @@ public class JobSession
         }
     }
 
+    public async Task<IEnumerable<JobModel>?> Search(JobSearchModel search)
+    {
+        try
+        {
+            using var db = _dbFactory.CreateDbContext();
+            var records = await db.Jobs.Where(r => r.IsCompleted == search.IsCompleted).ToListAsync();
+            return _mapper.Map<IEnumerable<JobModel>>(records);
+        }
+        catch (Exception e)
+        {
+            throw new DatabaseException(e);
+        }
+    }
+
     public async Task<JobModel?> Create(JobModel input)
     {
         try
         {
-            // id = 0 で作成すると
             using var db = _dbFactory.CreateDbContext();
             var find = await db.Jobs.FindAsync(input.Id);
             if (find != null) return null;
@@ -52,19 +66,19 @@ public class JobSession
         }
     }
 
-    public async Task<bool> Update(JobModel input)
+    public async Task<JobModel?> Update(JobModel input)
     {
         try
         {
             using var db = _dbFactory.CreateDbContext();
             var find = await db.Jobs.FirstOrDefaultAsync(r => r.UserId == input.UserId);
-            if (find == null) return false;
+            if (find == null) return null;
 
             find.Description = input.Description;
             find.IsCompleted = input.IsCompleted;
             find.UpdateDate = DateTime.Now;
             await db.SaveChangesAsync();
-            return true;
+            return _mapper.Map<JobModel>(find);
         }
         catch (Exception e)
         {

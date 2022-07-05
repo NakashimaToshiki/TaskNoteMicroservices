@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Job.Http.Client\Job.Http.Client.csproj" />
     <ProjectReference Include="..\..\..\MicroServices\Identity\Identity.Http.Client\Identity.Http.Client.csproj" />
+    <ProjectReference Include="..\..\..\MicroServices\Job\Job.Http.Client\Job.Http.Client.csproj" />
   </ItemGroup>
 
 </Project>
