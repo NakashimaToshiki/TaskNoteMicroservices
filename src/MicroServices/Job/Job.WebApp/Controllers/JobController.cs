@@ -1,6 +1,6 @@
 ﻿using Job.Http;
 
-namespace Job.WebApi.Controllers;
+namespace Job.WebApp.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

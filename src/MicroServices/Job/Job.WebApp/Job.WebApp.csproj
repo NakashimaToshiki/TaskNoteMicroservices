@@ -4,22 +4,25 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>1c2c39de-1f4f-45af-8e0e-349c4fe32990</UserSecretsId>
+    <UserSecretsId>4936df4f-7a0f-4875-bb1b-9a98519165d6</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..\..</DockerfileContext>
-    <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.2" />
   </ItemGroup>
 
   <ItemGroup>

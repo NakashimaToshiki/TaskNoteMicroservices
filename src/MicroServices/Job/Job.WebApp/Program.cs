@@ -7,16 +7,14 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddRazorPages();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbSessionServices();
 builder.Services.AddAutoMapper(cfg => {
     cfg.AddProfile<AutoMapperProfileConfiguration>();
 }).AddSingleton<IMapper, Mapper>();
-
 
 // 下記の接続文字はAuzre上のデータベースをVisualStudioのNugetでマイグレーションしたい場合にコメントインします。
 // 正しい方法はCI/CDでデプロイ時にデータベースのマイグレーションが発生すべきなので一時的な利用方法として認識して下さい。
@@ -50,11 +48,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
 //app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapRazorPages();
 app.MapControllers();
 
 app.Run();

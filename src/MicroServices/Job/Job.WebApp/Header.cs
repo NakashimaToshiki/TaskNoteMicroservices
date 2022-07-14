@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Job.WebApi;
+namespace Job.WebApp;
 
 public class Header
 {

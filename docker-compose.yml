@@ -8,7 +8,7 @@ services:
       dockerfile: src/ApiGateways/Aggregators/TaskNote.Bff/Dockerfile
     depends_on:
       - identity-webapi
-      - job-webapi
+      - job-webapp
       
   tasknote-bff-dapr:
     image: "daprio/daprd:1.6.0"
@@ -28,14 +28,14 @@ services:
     depends_on:
       - identity-webapi
   
-  job-webapi:
+  job-webapp:
     image: ${DOCKER_REGISTRY-}job
     build:
       context: .
-      dockerfile: src/MicroServices/Job/Job.WebApi/Dockerfile
+      dockerfile: src/MicroServices/Job/Job.WebApp/Dockerfile
       
-  job-webapi-dapr:
+  job-webapp-dapr:
     image: "daprio/daprd:1.6.0"
-    network_mode: "service:job-webapi"
+    network_mode: "service:job-webapp"
     depends_on:
-      - job-webapi
+      - job-webapp

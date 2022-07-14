@@ -6,7 +6,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - IdentityApiId=identity-webapi
-      - JobApiId=job-webapi
+      - JobApiId=job-webapp
     ports:
       - "1101:80"
       - "2101:443"
@@ -35,7 +35,7 @@ services:
       "-app-id", "identity-webapi",
       "-app-port", "80"]
       
-  job-webapi:
+  job-webapp:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
@@ -46,7 +46,7 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
-  job-webapi-dapr:
+  job-webapp-dapr:
     command: ["./daprd", 
-      "-app-id", "job-webapi",
+      "-app-id", "job-webapp",
       "-app-port", "80"]
