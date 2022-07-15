@@ -10,6 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="scripts\gulpfile.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="scripts\app.js" />
+    <Content Include="scripts\app.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
@@ -21,12 +30,16 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.16.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Job.Entity.FrameworkCore\Job.Entity.FrameworkCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="gulpfile.js" />
   </ItemGroup>
 
 </Project>
