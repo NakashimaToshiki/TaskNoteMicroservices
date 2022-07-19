@@ -10,12 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="scripts\gulpfile.js" />
+    <None Remove="ts\gulpfile.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="scripts\app.js" />
-    <Content Include="scripts\app.js.map" />
+    <Content Include="ts\app.js" />
+    <Content Include="ts\app.js.map" />
   </ItemGroup>
 
   <ItemGroup>

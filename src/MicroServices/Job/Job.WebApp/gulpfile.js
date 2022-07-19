@@ -6,12 +6,12 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 var gulp = require("gulp");
 var del = require("del");
 var paths = {
-    scripts: ["scripts/**/*.js", "scripts/**/*.ts", "scripts/**/*.map"],
+    scripts: ["ts/**/*.js", "ts/**/*.ts", "ts/**/*.map"],
 };
 gulp.task("clean", function () {
-    return del(["wwwroot/scripts/**/*"]);
+    return del(["wwwroot/ts/**/*"]);
 });
 gulp.task("default", function (done) {
-    gulp.src(paths.scripts).pipe(gulp.dest("wwwroot/scripts"));
+    gulp.src(paths.scripts).pipe(gulp.dest("wwwroot/ts"));
     done();
 });
