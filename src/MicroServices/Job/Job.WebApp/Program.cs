@@ -24,7 +24,11 @@ builder.Services.AddAutoMapper(cfg => {
 //optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Database"));
 //builder.Services.AddDbContextFactory<JobDbContext>(options => options.UseSqlServer(configuration))
 
-builder.Services.AddDbContextFactory<JobDbContext>(options => options.UseInMemoryDatabase("dammy"));
+builder.Services.AddDbContextFactory<JobDbContext>(options =>
+{
+    options.UseInMemoryDatabase("dammy");
+});
+
 
 string _allowSpecificOrigins = "allowSpecificOrigins";
 
@@ -41,6 +45,11 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+// データベースの初期値生成のために必要
+var dbContextFactory = app.Services.GetService<IDbContextFactory<JobDbContext>>();
+var db = dbContextFactory?.CreateDbContext();
+db?.Database.EnsureCreated();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

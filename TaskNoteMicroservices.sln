@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Http.Client", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Job.Http.Client", "src\MicroServices\Job\Job.Http.Client\Job.Http.Client.csproj", "{058536A7-2D2B-4014-B377-AFB4D2D2F32F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.WebApp", "src\MicroServices\Job\Job.WebApp\Job.WebApp.csproj", "{C1C89BEF-4979-4A39-8AC4-92E399FBB860}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Job.WebApp", "src\MicroServices\Job\Job.WebApp\Job.WebApp.csproj", "{C1C89BEF-4979-4A39-8AC4-92E399FBB860}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.WebApi", "src\MicroServices\Identity\Identity.WebApi\Identity.WebApi.csproj", "{056A2024-4343-486F-8B79-0B4638429756}"
 EndProject

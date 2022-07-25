@@ -12,5 +12,17 @@ public class UserMap : IEntityTypeConfiguration<UserEntity>
         builder.Property(p => p.Id).HasColumnName("id").ValueGeneratedOnAdd();
         builder.Property(p => p.Name).HasColumnName("name");
         builder.Property(p => p.SexId).HasColumnName("sex_id");
+
+#if DEBUG
+        builder.HasData(new UserEntity[]
+        {
+            new UserEntity()
+            {
+                Id = "nakashima",
+                Name = "nakashima",
+                SexId = Sex.Male,
+            },
+        });
+#endif
     }
 }

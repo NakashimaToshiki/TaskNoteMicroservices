@@ -19,5 +19,23 @@ public class JobMap : IEntityTypeConfiguration<JobEntity>
             .WithMany(user => user.Jobs)
             .HasForeignKey(user => user.UserId)
             ;
+
+#if DEBUG
+
+        builder.HasData(new JobEntity[]
+        {
+            new JobEntity()
+            {
+                Id = 1,
+                Title = "はじめてのタスク",
+                Description = "すべてのタスクです",
+                IsCompleted = false,
+                UpdateDate = DateTime.Now,
+                CreatedDate = DateTime.Now,
+                UserId = "nakashima"
+            },
+        });
+#endif
+
     }
 }
