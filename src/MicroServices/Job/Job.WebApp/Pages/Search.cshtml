@@ -1,0 +1,14 @@
+﻿@page
+@model Job.WebApp.Pages.SearchModel
+@{
+    for(int i = 0; i < Model.JobModels.Count; i++){
+        @Model.JobModels[i].Title
+    }
+}
+
+<form method="get">
+    <header>
+    <meta name="xxx" http-equiv="xxx" content="yyy">
+    </header>
+    <button type="submit">送信</button>
+</form>

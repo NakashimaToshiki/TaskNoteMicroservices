@@ -34,12 +34,12 @@ public class JobSession
         }
     }
 
-    public async Task<IEnumerable<JobModel>?> Search(JobSearchModel search)
+    public async Task<IEnumerable<JobModel>> Search(JobSearchModel search)
     {
         try
         {
             using var db = _dbFactory.CreateDbContext();
-            var records = await db.Jobs.Where(r => r.IsCompleted == search.IsCompleted).ToListAsync();
+            var records = await db.Jobs.Where(r => r.IsCompleted == search.IsCompleted).Skip(search.SkipCount).Take(search.TakeCount).ToListAsync();
             return _mapper.Map<IEnumerable<JobModel>>(records);
         }
         catch (Exception e)
