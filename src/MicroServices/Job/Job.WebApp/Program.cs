@@ -3,6 +3,9 @@ using Job.Entity.FrameworkCore;
 using Job.Entity.FrameworkCore.Mapper;
 using Job.Entity.FrameworkCore.Sessions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.WebEncoders;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,8 +33,9 @@ builder.Services.AddDbContextFactory<JobDbContext>(options =>
 });
 
 
+// 今のところどのWebサイトからでもWebApiにアクセスできるように設定している
+// リリースする際は必ず制限する
 string _allowSpecificOrigins = "allowSpecificOrigins";
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: _allowSpecificOrigins,
@@ -42,6 +46,12 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader()
             .AllowAnyMethod();
         });
+});
+
+// 出力されるHTMLの日本語文字が実態参照(数値文字参照)で出力されないようにする
+builder.Services.Configure<WebEncoderOptions> (options =>
+{
+    options.TextEncoderSettings = new TextEncoderSettings(UnicodeRanges.All);
 });
 
 var app = builder.Build();

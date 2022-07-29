@@ -7,5 +7,6 @@ public static class JobDbSessionsServiceCollectionExtentions
     public static IServiceCollection AddDbSessionServices(this IServiceCollection services) =>
         services
         .AddSingleton<JobSession>()
+        .AddSingleton<UserSession>()
         ;
 }

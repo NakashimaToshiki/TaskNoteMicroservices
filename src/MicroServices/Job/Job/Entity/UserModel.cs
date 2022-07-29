@@ -15,6 +15,7 @@ public record UserModel
 
     [Display(Name = "ユーザー名")]
     [Required(ErrorMessage = "入力必須です。")]
+    [MaxLength(20)]
     public string Name { get; set; } = string.Empty;
 
     [Display(Name = "性別")]
@@ -26,4 +27,19 @@ public enum Sex
     None,
     Male,
     Female,
+}
+
+public record NullUserModel : UserModel
+{
+
+    public static UserModel Instance { get; } = new UserModel()
+    {
+        Id = "存在しないId",
+        Name = "存在しない名前",
+        SexId = Sex.None
+    };
+
+    protected NullUserModel()
+    {
+    }
 }

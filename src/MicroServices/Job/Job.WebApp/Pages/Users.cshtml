@@ -1,0 +1,11 @@
+﻿@page "{userid}"
+@model Job.WebApp.Pages.UsersModel
+@{
+}
+
+<form method="post">
+    <input asp-for="UserModel.Id" />
+    <input asp-for="UserModel.Name" />
+    <input asp-for="UserModel.SexId" />
+    <button type="submit">更新</button>
+</form>
